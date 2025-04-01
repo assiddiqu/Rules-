@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Watch Time Booster</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-weight: 700;
+        }
+        input {
+            padding: 10px;
+            width: 60%;
+            max-width: 400px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #ff8c00;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e07b00;
+        }
+        #videoContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        iframe {
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        .rules {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .rules ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .rules li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>YouTube Watch Time Booster</h1>
+    <input type="text" id="videoUrl" placeholder="Enter YouTube Video URL">
+    <button onclick="generateVideos()">Start Watching</button>
+    <h2>Live Videos</h2>
+    <div id="videoContainer"></div><h2>How to Use (कैसे उपयोग करें)</h2>
+<div class="rules">
+    <ul>
+        <li><b>Enter the YouTube video link and click 'Start Watching'.</b><br> YouTube वीडियो लिंक डालें और 'Start Watching' पर क्लिक करें।</li>
+        <li><b>Keep the tab open to ensure watch time is counted.</b><br> सुनिश्चित करें कि वॉच टाइम गिना जाए, इसके लिए टैब को खुला रखें।</li>
+        <li><b>Use different IPs or VPN for better results.</b><br> बेहतर परिणामों के लिए विभिन्न IPs या VPN का उपयोग करें।</li>
+        <li><b>Do not close or refresh frequently.</b><br> बार-बार टैब को बंद या रीफ्रेश न करें।</li>
+        <li><b>Ensure volume is on or toggled sometimes.</b><br> सुनिश्चित करें कि ध्वनि चालू हो या कभी-कभी बदली जाए।</li>
+        <li><b>Watch at least 30 minutes per session for effective results.</b><br> प्रभावी परिणामों के लिए प्रति सत्र कम से कम 30 मिनट देखें।</li>
+        <li><b>Do not interact suspiciously with multiple accounts.</b><br> कई खातों से संदिग्ध गतिविधियां न करें।</li>
+        <li><b>For best results, use multiple devices with different networks.</b><br> सर्वोत्तम परिणामों के लिए, विभिन्न नेटवर्क के साथ कई उपकरणों का उपयोग करें।</li>
+    </ul>
+</div>
+
+<script>
+    function extractVideoID(url) {
+        let match = url.match(/(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/)?([^&\n?#]+)/);
+        return match ? match[1] : null;
+    }
+
+    function generateVideos() {
+        let videoContainer = document.getElementById("videoContainer");
+        videoContainer.innerHTML = ""; 
+        let videoUrl = document.getElementById("videoUrl").value;
+        let videoId = extractVideoID(videoUrl);
+        
+        if (!videoId) {
+            alert("Please enter a valid YouTube link!");
+            return;
+        }
+        
+        for (let i = 0; i < 5; i++) { 
+            let iframe = document.createElement("iframe");
+            iframe.width = "300";
+            iframe.height = "200";
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
+            iframe.allow = "autoplay";
+            videoContainer.appendChild(iframe);
+        }
+    }
+</script>
+
+</body>
+</html>
